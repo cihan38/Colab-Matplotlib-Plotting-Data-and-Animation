@@ -40,5 +40,5 @@ def animate(i):                         #animation function
 anim = animation.FuncAnimation(fig, animate, init_func=init,
                              frames=100, interval=1000, blit=True) #code runs for the 1 sec interval
 
-rc('animation', html='jshtml')  #make sure you use this so that it can run in Colab
+rc('animation', html='jshtml')  #finally use this to run the animation in Colab
 anim
