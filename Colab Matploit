@@ -1,5 +1,5 @@
-# Hello all! I hope this helps you if you are using Colab to make some animated charts. 
-#If you are interested in live animated charts in Colab, please follow the spets below.
+# Hello all! I hope this example helps you If you are interested in live animated charts in Colab
+#please follow the steps below.
 
 
 import random                   #random number generator
