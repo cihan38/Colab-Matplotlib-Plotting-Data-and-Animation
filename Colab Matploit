@@ -1,39 +1,44 @@
-import random
-from itertools import count
-import pandas as pd
+# Hello all! I hope this helps you if you are using Colab to make some animated charts. 
+#If you are interested in live animated charts in Colab, please follow the spets below.
 
-import matplotlib.pyplot as plt
-from matplotlib import animation, rc
-from IPython.display import HTML
 
-plt.style.use('fivethirtyeight')
+import random                   #random number generator
+from itertools import count     #count tool
+import pandas as pd             #panda daat frame
 
-fig, ax = plt.subplots()
+import matplotlib.pyplot as plt #plot tool     
+
+from matplotlib import animation, rc #this part for animation
+from IPython.display import HTML     # displays the cart in Colab   
+
+plt.style.use('fivethirtyeight')     # this is a style for the fig. There many styles are avliable in Matlpotlib. 
+
+fig, ax = plt.subplots()  #y set a figure template. Otherwise code wont work in Bolab
 plt.close()
 
-ax.set_xlim(( 0, 100))
-ax.set_ylim(( 0, 4))
+ax.set_xlim(( 0, 100))     # set x axis from 0 to 100 (you can set this 0 to 10 if you want to have a shorter animation) 
+ax.set_ylim(( 0, 4))        # set y axis from 0 to 4   (you can change this range if you want) 
 
-line, = ax.plot([], [], lw=2)
+line, = ax.plot([], [], lw=2)  #this set the line in the fig/chart
 
-def init():
+def init():                 #this function needs to be added plot the background for each data frame
     line.set_data([], [])
     return (line,)
 
-x_vals = []
+x_vals = []                 #set a list for x and y axis. 
 y_vals = []
 
 index = count()
 
-def animate(i):
-  x_vals.append(next(index))
+def animate(i):                         #animation function
+  x_vals.append(next(index))            #append the values in x and y axis
   y_vals.append(random.randint(0, 5))
-  line.set_data(x_vals, y_vals)
+  line.set_data(x_vals, y_vals)         # set the x and y values lines for the figure/animation
   return (line,)
   
 
 anim = animation.FuncAnimation(fig, animate, init_func=init,
-                             frames=100, interval=1000, blit=True)
+                             frames=100, interval=1000, blit=True) # 1 sec interval
 
-rc('animation', html='jshtml')
+rc('animation', html='jshtml')  # make sure you use thi so that t can run on Colab
 anim
