@@ -1,44 +1,44 @@
-# Hello all! I hope this example helps you If you are interested in live animated charts in Colab
-#please follow the steps below.
+# Hello all! This is my first code-related post on github. 
+# Follow the below steps if you are interested in creating animated charts in Colab.
 
 
 import random                   #random number generator
 from itertools import count     #count tool
-import pandas as pd             #panda daat frame
+import pandas as pd             #pandas data frame
 
 import matplotlib.pyplot as plt #plot tool     
 
 from matplotlib import animation, rc #this part for animation
-from IPython.display import HTML     # displays the cart in Colab   
+from IPython.display import HTML     #displays the chart in Colab   
 
-plt.style.use('fivethirtyeight')     # this is a style for the fig. There many styles are avliable in Matlpotlib. 
+plt.style.use('fivethirtyeight')     #this is a style for the figure. There are other styles available in Matlpotlib. 
 
-fig, ax = plt.subplots()  #y set a figure template. Otherwise code wont work in Bolab
+fig, ax = plt.subplots()            #set a figure template, otherwise code won't work in Colab
 plt.close()
 
-ax.set_xlim(( 0, 100))     # set x axis from 0 to 100 (you can set this 0 to 10 if you want to have a shorter animation) 
-ax.set_ylim(( 0, 4))        # set y axis from 0 to 4   (you can change this range if you want) 
+ax.set_xlim(( 0, 100))     #set x axis range from 0 to 100 (you can set this range from 0 to 5 if you want to have a shorter animation) 
+ax.set_ylim(( 0, 4))       #set y axis range from 0 to 4   (you can change this range if you want) 
 
-line, = ax.plot([], [], lw=2)  #this set the line in the fig/chart
+line, = ax.plot([], [], lw=2)  #this sets the line in the fig./chart
 
-def init():                 #this function needs to be added plot the background for each data frame
+def init():                 #this function sets the plot background 
     line.set_data([], [])
     return (line,)
 
-x_vals = []                 #set a list for x and y axis. 
+x_vals = []                 #these set the lists for both the x and y axes. 
 y_vals = []
 
 index = count()
 
 def animate(i):                         #animation function
-  x_vals.append(next(index))            #append the values in x and y axis
-  y_vals.append(random.randint(0, 5))
-  line.set_data(x_vals, y_vals)         # set the x and y values lines for the figure/animation
+  x_vals.append(next(index))            #append the x values 
+  y_vals.append(random.randint(0, 5))   #append the random y values 
+  line.set_data(x_vals, y_vals)         #sets the x and y values lines for the figure/animation
   return (line,)
   
 
 anim = animation.FuncAnimation(fig, animate, init_func=init,
-                             frames=100, interval=1000, blit=True) # 1 sec interval
+                             frames=100, interval=1000, blit=True) #code runs for the 1 sec interval
 
-rc('animation', html='jshtml')  # make sure you use thi so that t can run on Colab
+rc('animation', html='jshtml')  #make sure you use this so that it can run in Colab
 anim
