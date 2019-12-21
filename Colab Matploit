@@ -19,8 +19,8 @@ plt.close()
 ax.set_xlim(( 0, 100))     #set x axis range from 0 to 100 (you can set this range from 0 to 5 if you want to have a shorter animation) 
 ax.set_ylim(( 0, 4))       #set y axis range from 0 to 4   (you can change this range if you want) 
 
-line, = ax.plot([], [], lw=2)  #this sets the line in the fig./chart
-
+line, = ax.plot([], [], lw=2)  #this sets the line in the figure/chart. Colab is a bit different than some of the python editors out there.
+                               #you have to set up the chart background in advance using this part.      
 def init():                 #this function sets the plot background 
     line.set_data([], [])
     return (line,)
